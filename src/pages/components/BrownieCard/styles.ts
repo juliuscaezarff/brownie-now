@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { TitleText } from '../../../components/Typegraphy'
 
 export const BrownieCardContainer = styled.div`
   position: relative;
@@ -23,7 +24,7 @@ export const BrownieBoxCotainer = styled.div`
   padding-top: 0;
   background: #000;
   border-radius: 6px 36px 6px 36px;
-  transition: 0.7s;
+  transition: 0.5s;
 
   &:hover {
     height: 12rem;
@@ -36,17 +37,25 @@ export const Tags = styled.div`
   align-items: center;
   justify-content: center;
   gap: 4px;
-  margin-top: 1rem;
+  margin-top: 3rem;
   margin-bottom: 1.25rem;
   flex-wrap: wrap;
 
   span {
-    background: ${({ theme }) => theme.colors["brand-brown"]};
-    color: ${({ theme }) => theme.colors["base-white"]};
-    font-size: ${({ theme }) => theme.textSizes["components-tag"]};
+    background: ${({ theme }) => theme.colors['brand-brown']};
+    color: ${({ theme }) => theme.colors['base-white']};
+    font-size: ${({ theme }) => theme.textSizes['components-tag']};
     text-transform: uppercase;
     padding: 0.25rem 0.5rem;
     border-radius: 999px;
     font-weight: 700;
   }
+`
+
+export const Name = styled(TitleText).attrs({
+    size: "s",
+    color: "subtitle",
+    weight: 700,
+})`
+  margin-bottom: 0.5rem;
 `
