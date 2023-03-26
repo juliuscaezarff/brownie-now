@@ -1,50 +1,36 @@
 import styled from 'styled-components'
-import { TitleText } from '../../../components/Typegraphy'
+import { TitleText, RegularText } from '../../../components/Typegraphy'
 
 export const BrownieCardContainer = styled.div`
-  position: relative;
   width: 100%;
+  background: ${({ theme }) => theme.colors["base-card"]};
+  border-radius: 6px 36px 6px 36px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0;  
+  text-align: center;
 
   img {
     width: 7.5rem;
     height: 7.5rem;
-    position: absolute;
-    left: 50%;
-    top: -50px;
-    transform: translate(-50%);
-    transition: 0.5s;
-  }
+    margin-top: -1.25rem
+  };
 `
-
-export const BrownieBoxCotainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 0;
-  background: #000;
-  border-radius: 6px 36px 6px 36px;
-  transition: 0.5s;
-
-  &:hover {
-    height: 12rem;
-  }
-`
-
 export const Tags = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 4px;
-  margin-top: 3rem;
+  margin-top: 1rem;
   margin-bottom: 1.25rem;
   flex-wrap: wrap;
 
   span {
-    background: ${({ theme }) => theme.colors['brand-brown']};
-    color: ${({ theme }) => theme.colors['base-white']};
-    font-size: ${({ theme }) => theme.textSizes['components-tag']};
+    background: ${({ theme }) => theme.colors["brand-yellow-light"]};
+    color: ${({ theme }) => theme.colors["brand-yellow-dark"]};
+    font-size: ${({ theme }) => theme.textSizes["components-tag"]};
     text-transform: uppercase;
     padding: 0.25rem 0.5rem;
     border-radius: 999px;
@@ -53,9 +39,16 @@ export const Tags = styled.div`
 `
 
 export const Name = styled(TitleText).attrs({
-    size: "s",
-    color: "subtitle",
-    weight: 700,
+  size: "s",
+  color: "subtitle",
+  weight: 700,
 })`
   margin-bottom: 0.5rem;
 `
+
+export const Description = styled(RegularText).attrs({
+  size: "s",
+  color: "label"
+})`
+  margin-bottom: 2rem;
+`;
