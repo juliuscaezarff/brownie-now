@@ -8,15 +8,16 @@ export function Header() {
     <HeaderContainer>
       <div className="container">
         <NavLink to="/">
-        <img src={coffeeLogoImg} alt="" />
+        {/* <img src={coffeeLogoImg} alt="" /> */}
+        <h1>brownie<span>NOW</span></h1>
         </NavLink>
         <HeaderButtonContainer>
-          <HeaderButton variant="purple">
+          <HeaderButton variant="white">
             <MapPin size={20} weight="fill"/>
             Humaitá, AM 
           </HeaderButton>
           <NavLink to="/completeOrder">
-          <HeaderButton variant="yellow">
+          <HeaderButton variant="brown">
             <ShoppingCart size={20} weight="fill"/>
             </HeaderButton>
             </NavLink>
