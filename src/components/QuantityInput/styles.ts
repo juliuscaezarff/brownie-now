@@ -13,6 +13,8 @@ export const QuantityInputContainer = styled.div<QuantityInputContainerProps>`
   gap: 4px;
   border-radius: 6px;
 
+  padding: 0.5rem;
+
   input {
     text-align: center;
     width: 100%;
@@ -48,7 +50,7 @@ export const IconWrapper = styled.button.attrs({
   transition: 0.4s;
 
   &:disabled {
-    opacity: 0.4s;
+    opacity: 0.4;
   }
 
   &:not(:disabled):hover {
