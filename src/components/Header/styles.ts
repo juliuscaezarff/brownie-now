@@ -7,11 +7,23 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 5;
 
   > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  h1 {
+    color: black;
+  }
+
+  span {
+    color: brown;
   }
 `
 
@@ -22,7 +34,7 @@ export const HeaderButtonContainer = styled.div`
 `
 
 interface HeaderButtonProps {
-  variant: 'purple' | 'yellow'
+  variant: 'white' | 'brown'
 }
 
 export const HeaderButton = styled.button<HeaderButtonProps>`
@@ -40,14 +52,14 @@ export const HeaderButton = styled.button<HeaderButtonProps>`
 
   ${({ variant, theme }) => css`
     background: ${theme.colors[`brand-${variant}-light`]};
-    color: ${theme.colors[`brand-${variant}-dark`]};
+    /* color: ${theme.colors[`brand-${variant}-dark`]}; */
   `}
 
   ${({ variant, theme }) =>
-    variant === 'purple' &&
+    variant === 'brown' &&
     css`
       svg {
-        color: ${theme.colors[`brand-purple`]};
+        color: ${theme.colors[`brand-brown`]};
       }
     `}
 `
