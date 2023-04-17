@@ -52,10 +52,7 @@ export function BrownieCard({ brownie }: BrownieProps) {
 
   return (
     <BrownieCardContainer className="container">
-      <img
-        src="https://media.istockphoto.com/id/1270135450/pt/foto/brownie.jpg?s=612x612&w=0&k=20&c=c1pjkLM0vwZ2jdq-oRezrVn2_z-qvnJkePpGJ5wgzk8="
-        alt=""
-      />
+      <img src={`/brownies/${brownie.photo}`} />
 
       <Tags>
         {brownie.tags.map(tag => (
@@ -87,7 +84,4 @@ export function BrownieCard({ brownie }: BrownieProps) {
       </CardFooter>
     </BrownieCardContainer>
   )
-}
-function formateMoney(price: number) {
-  throw new Error('Function not implemented.')
 }
