@@ -10,6 +10,7 @@ import {
 } from './styles'
 import { ShoppingCart } from 'phosphor-react'
 import { formatMoney } from '../../../utils/formateMoney';
+import { useCart } from '../../../hooks/useCart';
 
 export interface Brownie {
   id: number;
@@ -25,6 +26,17 @@ interface BrownieProps {
 }
 
 export function BrownieCard({ brownie }: BrownieProps) {
+  const { addBrownietoCart } = useCart()
+
+  function handleAddToCart() {
+    const brownieToAdd = {
+      ...brownie,
+      quantity: 1
+    }
+
+    addBrownietoCart(brownieToAdd)
+  }
+
   const formattedPrice = formatMoney(brownie.price)
 
   return (
@@ -53,7 +65,7 @@ export function BrownieCard({ brownie }: BrownieProps) {
 
         <AddCartWrapper>
           <QuantityInput />
-          <button>
+          <button onClick={handleAddToCart}>
             <ShoppingCart weight="fill" size={22} />
           </button>
         </AddCartWrapper>
@@ -64,4 +76,3 @@ export function BrownieCard({ brownie }: BrownieProps) {
 function formateMoney(price: number) {
   throw new Error('Function not implemented.')
 }
-
