@@ -11,6 +11,7 @@ import {
 import { ShoppingCart } from 'phosphor-react'
 import { formatMoney } from '../../../utils/formateMoney';
 import { useCart } from '../../../hooks/useCart';
+import { useState } from 'react';
 
 export interface Brownie {
   id: number;
@@ -26,12 +27,22 @@ interface BrownieProps {
 }
 
 export function BrownieCard({ brownie }: BrownieProps) {
+  const [quantity, setQuantity] = useState(1)
+
+  function handleIncrease() {
+    setQuantity(state => state + 1)
+  }
+
+  function handleDecrase() {
+    setQuantity(state => state - 1)
+  }
+
   const { addBrownietoCart } = useCart()
 
   function handleAddToCart() {
     const brownieToAdd = {
       ...brownie,
-      quantity: 1
+      quantity,
     }
 
     addBrownietoCart(brownieToAdd)
@@ -64,7 +75,11 @@ export function BrownieCard({ brownie }: BrownieProps) {
         </div>
 
         <AddCartWrapper>
-          <QuantityInput />
+          <QuantityInput 
+            onIncrease={handleIncrease}
+            onDecrease={handleDecrase}
+            quantity={quantity}
+          />
           <button onClick={handleAddToCart}>
             <ShoppingCart weight="fill" size={22} />
           </button>
