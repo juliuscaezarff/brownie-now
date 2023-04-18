@@ -1,7 +1,6 @@
-import { OurBrownies } from "../components/OurBrownies";
-import { Intro } from "../components/Intro";
-import { HomeContainer } from "./styles";
-import { Wave } from "../../components/Wave";
+import { OurBrownies } from '../components/OurBrownies'
+import { Intro } from '../components/Intro'
+import { HomeContainer } from './styles'
 
 export function HomePage() {
   return (
