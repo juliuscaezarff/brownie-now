@@ -16,7 +16,7 @@ interface BrownieCartCardProps {
 }
 
 export function BrownieCartCard({ brownie }: BrownieCartCardProps) {
-  const { changeCartItemQuantity } = useCart()
+  const { changeCartItemQuantity, removeCartItem } = useCart()
 
   function handleIncrease() {
     changeCartItemQuantity(brownie.id, "increase")
@@ -24,6 +24,10 @@ export function BrownieCartCard({ brownie }: BrownieCartCardProps) {
 
   function handleDecrease() {
     changeCartItemQuantity(brownie.id, "decrease")
+  }
+
+  function handleRemove() {
+    removeCartItem(brownie.id)
   }
 
   const brownieTotal = brownie.price * brownie.quantity
@@ -37,7 +41,7 @@ export function BrownieCartCard({ brownie }: BrownieCartCardProps) {
           <RegularText color="subtitle">{brownie.name}</RegularText>
           <ActionsContainer>
             <QuantityInput size='small'  onIncrease={handleIncrease} onDecrease={handleDecrease} quantity={brownie.quantity}/>
-            <RemoveButton>
+            <RemoveButton onClick={handleRemove}>
               <Trash size={16} />
               Remover
             </RemoveButton>
