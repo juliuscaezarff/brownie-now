@@ -13,7 +13,8 @@ interface CartContextType {
   changeCartItemQuantity: (
     cartItemId: number,
     type: 'increase' | 'decrease'
-  ) => void
+  ) => void;
+  removeCartItem: (cartItemId: number) => void;
 }
 
 interface CartContextProviderProps {
@@ -62,13 +63,28 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     setCartItems(newCart)
   }
 
+  function removeCartItem(cartItemId: number) {
+    const newCart = produce(cartItems, draft => {
+      const brownieExistsInCart = cartItems.findIndex(
+        cartItems => cartItems.id === cartItemId
+      )
+
+      if (brownieExistsInCart >= 0) {
+        draft.splice(brownieExistsInCart, 1)
+      }
+    })
+
+    setCartItems(newCart)
+  }
+
   return (
     <CartContext.Provider
       value={{
         cartItems,
         cartQuantity,
         addBrownietoCart,
-        changeCartItemQuantity
+        changeCartItemQuantity,
+        removeCartItem
       }}
     >
       {children}
