@@ -7,9 +7,10 @@ export interface CartItem extends Brownie {
 }
 
 interface CartContextType {
-  cartItems: CartItem[]
-  cartQuantity: number
-  addBrownietoCart: (brownie: CartItem) => void
+  cartItems: CartItem[];
+  cartQuantity: number;
+  cartItemsTotal: number;
+  addBrownietoCart: (brownie: CartItem) => void;
   changeCartItemQuantity: (
     cartItemId: number,
     type: 'increase' | 'decrease'
@@ -27,6 +28,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
 
   const cartQuantity = cartItems.length
+
+  const cartItemsTotal = cartItems.reduce((total, cartItems) => {
+    return total + cartItems.price * cartItems.quantity
+  }, 0)
 
   function addBrownietoCart(brownie: CartItem) {
     const brownieAlreadyExistsInCart = cartItems.findIndex(
@@ -82,6 +87,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       value={{
         cartItems,
         cartQuantity,
+        cartItemsTotal,
         addBrownietoCart,
         changeCartItemQuantity,
         removeCartItem
