@@ -1,4 +1,4 @@
-import { Children, ReactNode, createContext, useState } from 'react'
+import { ReactNode, createContext, useEffect, useState } from 'react'
 import { Brownie } from '../pages/components/BrownieCard'
 import { produce } from 'immer'
 
@@ -24,8 +24,16 @@ interface CartContextProviderProps {
 
 export const CartContext = createContext({} as CartContextType)
 
+const BROWNIE_ITEMS_STORAGE_KEY = "brownieDelivery:cartItems";
+
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    const storedCartItems = localStorage.getItem(BROWNIE_ITEMS_STORAGE_KEY);
+    if (storedCartItems) {
+      return JSON.parse(storedCartItems);
+    }
+    return [];
+  });
 
   const cartQuantity = cartItems.length
 
@@ -38,7 +46,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       cartItems => cartItems.id === brownie.id
     )
 
-    const newCart = produce(cartItems, draft => {
+    const newCart = produce(cartItems, (draft) => {
       if (brownieAlreadyExistsInCart < 0) {
         draft.push(brownie)
       } else {
@@ -82,6 +90,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     setCartItems(newCart)
   }
 
+  useEffect(() => {
+    localStorage.setItem(BROWNIE_ITEMS_STORAGE_KEY, JSON.stringify(cartItems));
+  }, [cartItems]);
+
   return (
     <CartContext.Provider
       value={{
@@ -90,7 +102,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         cartItemsTotal,
         addBrownietoCart,
         changeCartItemQuantity,
-        removeCartItem
+        removeCartItem,
       }}
     >
       {children}
