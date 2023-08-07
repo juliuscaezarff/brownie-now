@@ -1,9 +1,9 @@
-import { BenefitsContainer, IntroContainer, IntroContent, IntroTitle } from './styles'
-import brownieImg from './../../../assets/brownieImg.jpg'
 import { RegularText } from '../../../components/Typegraphy'
 import { InfoWithIcon } from '../../../components/InfoWithIcon'
-import { ShoppingCart, Package, Timer, Cake } from 'phosphor-react'
+import homeCakeShop from './../../../assets/homeCakeShop.svg'
 import { useTheme } from 'styled-components'
+import { BenefitsContainer, IntroContainer, IntroContent, IntroTitle } from './styles'
+import { ShoppingCart, Package, Timer, Cake } from 'phosphor-react'
 
 export function Intro() {
   const { colors } = useTheme();
@@ -45,7 +45,7 @@ export function Intro() {
           </BenefitsContainer>
         </div>
 
-        <img src={brownieImg} alt="" />
+        <img src={homeCakeShop} alt="" />
       </IntroContent>
     </IntroContainer>
   )
