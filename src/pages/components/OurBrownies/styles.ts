@@ -3,6 +3,11 @@ import styled from "styled-components";
 export const OurBrowniesContainer = styled.section`
   width: 100%;
   margin-top: 2rem;
+
+  @media(max-width: 390px) {
+    margin-top: 10rem;
+    text-align: center;
+  }
 `;
 
 export const BrownieList = styled.div`
@@ -12,4 +17,8 @@ export const BrownieList = styled.div`
   column-gap: 2rem;
   row-gap: 2.5rem;
   margin-top: 3.5rem;
+
+  @media (max-width: 390px) {
+    grid-template-columns: 1fr;
+  }
 `;
