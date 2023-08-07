@@ -6,6 +6,15 @@ export const SelectedBrowniesContainer = styled.div`
   flex-direction: column;
   gap: 0.75rem;
   width: 40rem;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    padding: 0 1rem;
+
+    h1 {
+      text-align: center;
+    }
+  }
 `;
 
 export const DetailsContainer = styled(SectionBaseStyles)`
