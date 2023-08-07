@@ -25,6 +25,17 @@ export const HeaderContainer = styled.header`
   span {
     color: brown;
   }
+
+  @media (max-width: 390px) {
+    > div {
+      flex-direction: column;
+    }
+
+    h1,
+    span {
+      margin: 0.5rem 0;
+    }
+  }
 `
 
 export const HeaderButtonContainer = styled.div`
