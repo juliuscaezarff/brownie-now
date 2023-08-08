@@ -20,6 +20,30 @@ export const OrderConfirmedContainer = styled.div`
     align-items: center;
     justify-content: space-between;
   }
+
+  @media (max-width: 600px) {
+    
+
+    h1 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    p {
+      font-size: 0.90rem;
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    > section {
+      gap: 1rem;
+      flex-direction: column;
+    }
+  }
 `;
 
 export const OrderDetailsContainer = styled.div`
@@ -39,5 +63,16 @@ export const OrderDetailsContainer = styled.div`
     z-index: -1;
     border-radius: 7px 37px 7px 37px;
     background: linear-gradient(102.89deg, #3cb371 2.61%, #603000 98.76%);
+  }
+
+  @media (max-width: 390px) {
+    padding: 1.rem;
+    border-radius: 6px; 
+    min-width: unset;
+    width: 100%; 
+
+    &::before {
+      border-radius: 7px;
+    }
   }
 `;
